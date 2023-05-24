@@ -1,0 +1,69 @@
+CREATE (TomSmith:Student
+   {stuId: 'S1001', name: 'Tom Smith', major: 'History', credits: 90})
+CREATE (AnnChin:Student
+   {stuId: 'S1002', name: 'Ann Chin', major: 'Math', credits: 36})
+CREATE (PerryLee:Student
+   {stuId: 'S1005', name: 'Perry Lee', major: 'History', credits: 3})
+CREATE (EdwardBurns:Student
+   {stuId: 'S1010', name: 'Edward Burns', major: 'Art', credits: 63})
+CREATE (OwenMcCarthy:Student
+   {stuId: 'S1013', name: 'Owen McCarthy', major: 'Math', credits: 0})
+CREATE (MaryJones:Student
+   {stuId: 'S1015', name: 'Mary Jones', major: 'Math', credits: 42})
+CREATE (JaneRivera:Student
+   {stuId: 'S1020', name: 'Jane Rivera', major: 'CSC', credits: 15})
+   
+CREATE (H221:Room {room: 'H221'})
+CREATE (M110:Room {room: 'M110'})
+CREATE (H225:Room {room: 'H225'})
+   
+CREATE (Art103a:Class
+	{classNumber: 'ART103A', schedule: 'MWF9'})
+CREATE (Csc201a:Class
+	{classNumber: 'CSC201A', schedule: 'TuThF10'})
+CREATE (Csc203a:Class
+	{classNumber: 'CSC203A', schedule: 'MThF12'})
+CREATE (Hst205a:Class
+	{classNumber: 'HST205A', schedule: 'MWF11'})
+CREATE (Mth101b:Class
+	{classNumber: 'MTH101B', schedule: 'MTuTh9'})
+CREATE (Mth103c:Class
+	{classNumber: 'MTH103C', schedule: 'MWF11'})
+	
+CREATE (F101:Faculty
+	{facId: 'F101', name: 'Adams', department: 'Art', rank: 'Professor'})
+CREATE (F105:Faculty
+	{facId: 'F105', name: 'Tanaka', department: 'CSC', rank: 'Instructor'})
+CREATE (F110:Faculty
+	{facId: 'F110', name: 'Byrne', department: 'Math', rank: 'Assistant'})
+CREATE (F115:Faculty
+	{facId: 'F115', name: 'Smith', department: 'History', rank: 'Associate'})
+CREATE (F221:Faculty
+	{facId: 'F221', name: 'Smith', department: 'CSC', rank: 'Professor'})
+
+CREATE (Art103a)-[:TAUGHT_IN]->(H221)
+CREATE (Csc201a)-[:TAUGHT_IN]->(M110)
+CREATE (Csc203a)-[:TAUGHT_IN]->(M110)
+CREATE (Hst205a)-[:TAUGHT_IN]->(H221)
+CREATE (Mth101b)-[:TAUGHT_IN]->(H225)
+CREATE (Mth103c)-[:TAUGHT_IN]->(H225)
+
+CREATE (Art103a)-[:TAUGHT_BY]->(F101)
+CREATE (Csc201a)-[:TAUGHT_BY]->(F105)
+CREATE (Csc203a)-[:TAUGHT_BY]->(F105)
+CREATE (Hst205a)-[:TAUGHT_BY]->(F115)
+CREATE (Mth101b)-[:TAUGHT_BY]->(F110)
+CREATE (Mth103c)-[:TAUGHT_BY]->(F110)
+
+CREATE (TomSmith)-[:ENROLLED_IN {grade: 'A'}]->(Art103a)
+CREATE (TomSmith)-[:ENROLLED_IN {grade: 'C'}]->(Hst205a)
+CREATE (AnnChin)-[:ENROLLED_IN {grade: 'D'}]->(Art103a)
+CREATE (AnnChin)-[:ENROLLED_IN {grade: 'F'}]->(Csc201a)
+CREATE (AnnChin)-[:ENROLLED_IN {grade: 'B'}]->(Mth103c)
+CREATE (EdwardBurns)-[:ENROLLED_IN]->(Art103a)
+CREATE (EdwardBurns)-[:ENROLLED_IN]->(Mth103c)
+CREATE (JaneRivera)-[:ENROLLED_IN {grade: 'B'}]->(Csc201a)
+CREATE (JaneRivera)-[:ENROLLED_IN {grade: 'A'}]->(Mth101b)
+
+
+
